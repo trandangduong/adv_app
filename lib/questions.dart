@@ -10,6 +10,6 @@ class Questions extends StatefulWidget {
 class _QuestionsState extends State<Questions> {
   @override
   Widget build(context) {
-    return const Text('Questions');
+    return const Text('Questions Sreen');
   }
 }
