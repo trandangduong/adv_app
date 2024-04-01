@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dart_format/dart_format.dart';
 
 class Questions extends StatefulWidget {
   const Questions({super.key});
@@ -10,10 +11,13 @@ class Questions extends StatefulWidget {
 class _QuestionsState extends State<Questions> {
   @override
   Widget build(context) {
-    return Column(
+    return SizedBox( 
+      width: double.infinity,
+      child:  Column(
+      mainAisAlignment: MainAxisAlignment.center,   
       children: [
-       const Text('Questions Sreen'),
-       const Sizedbox(height: 30),
+        const Text('Questions Sreen'),
+        const Sizedbox(height: 30),
         ElevatedButton(
           onPressed: () {},
           child: const Text('Answers 1'),
@@ -31,6 +35,6 @@ class _QuestionsState extends State<Questions> {
           child: const Text('Answers 4'),
           ),
       ],
-    ) ;
+    ) ,);
   }
 }
