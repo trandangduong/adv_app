@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:adv_app/answer_button.dart';
 import 'package:adv_app/data/questions.dart';
+=======
+import 'package:dart_format/dart_format.dart';
+>>>>>>> b45eb3f5ae1d974bf40544c498d55acc4424fc9b
 
 class Questions extends StatefulWidget {
   const Questions({super.key});
@@ -19,6 +23,7 @@ class _QuestionsState extends State<Questions> {
 
   @override
   Widget build(context) {
+<<<<<<< HEAD
     final currentQues = questions[currentQuesIndex];
 
     return SizedBox(
@@ -44,5 +49,32 @@ class _QuestionsState extends State<Questions> {
         ),
       ),
     );
+=======
+    return SizedBox( 
+      width: double.infinity,
+      child:  Column(
+      mainAisAlignment: MainAxisAlignment.center,   
+      children: [
+        const Text('Questions Sreen'),
+        const Sizedbox(height: 30),
+        ElevatedButton(
+          onPressed: () {},
+          child: const Text('Answers 1'),
+          ),
+        ElevatedButton(
+          onPressed: () {},
+          child: const Text('Answers 2'),
+          ),
+        ElevatedButton(
+          onPressed: () {},
+          child: const Text('Answers 3'),
+          ),
+        ElevatedButton(
+          onPressed: () {},
+          child: const Text('Answers 4'),
+          ),
+      ],
+    ) ,);
+>>>>>>> b45eb3f5ae1d974bf40544c498d55acc4424fc9b
   }
 }
