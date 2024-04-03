@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:adv_app/answer_button.dart';
 import 'package:adv_app/data/questions.dart';
-=======
-import 'package:dart_format/dart_format.dart';
->>>>>>> b45eb3f5ae1d974bf40544c498d55acc4424fc9b
+import 'package:google_fonts/google_fonts.dart';
 
 class Questions extends StatefulWidget {
-  const Questions({super.key});
+  const Questions({
+    super.key,
+    required this.onSelectedAns,
+  });
+  final void Function(String answer) onSelectedAns;
 
   @override
   State<Questions> createState() => _QuestionsState();
@@ -15,7 +16,10 @@ class Questions extends StatefulWidget {
 
 class _QuestionsState extends State<Questions> {
   var currentQuesIndex = 0;
-  void answerQues() {
+
+  void answerQues(String selectedAns) {
+    widget.onSelectedAns(selectedAns);
+
     setState(() {
       if (currentQuesIndex <= questions.length) currentQuesIndex++;
     });
@@ -23,7 +27,6 @@ class _QuestionsState extends State<Questions> {
 
   @override
   Widget build(context) {
-<<<<<<< HEAD
     final currentQues = questions[currentQuesIndex];
 
     return SizedBox(
@@ -36,45 +39,25 @@ class _QuestionsState extends State<Questions> {
           children: [
             Text(
               currentQues.text,
-              style: const TextStyle(
-                color: Color.fromARGB(255, 243, 65, 33),
+              style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
             ...currentQues.getShuffledAns().map((answer) {
-              return AnswerButton(answerText: answer, onTap: answerQues);
+              return AnswerButton(
+                answerText: answer,
+                onTap: () {
+                  answerQues(answer);
+                },
+              );
             }),
           ],
         ),
       ),
     );
-=======
-    return SizedBox( 
-      width: double.infinity,
-      child:  Column(
-      mainAisAlignment: MainAxisAlignment.center,   
-      children: [
-        const Text('Questions Sreen'),
-        const Sizedbox(height: 30),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Answers 1'),
-          ),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Answers 2'),
-          ),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Answers 3'),
-          ),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Answers 4'),
-          ),
-      ],
-    ) ,);
->>>>>>> b45eb3f5ae1d974bf40544c498d55acc4424fc9b
   }
 }
