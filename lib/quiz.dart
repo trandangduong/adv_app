@@ -25,7 +25,7 @@ class _QuizState extends State<Quiz> {
     selectedAns.add(answer);
     if (selectedAns.length == questions.length) {
       setState(() {
-        selectedAns = [];
+        // selectedAns = [];
         activeScr = 'result-Scr';
       });
     }

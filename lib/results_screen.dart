@@ -1,3 +1,4 @@
+import 'package:adv_app/question_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:adv_app/data/questions.dart';
 
@@ -8,15 +9,15 @@ class ResultScreen extends StatelessWidget {
     required this.chosenAns,
   });
   final List<String> chosenAns;
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
     for (var i = 0; i == chosenAns.length; i++) {
       summary.add(
         {
-          'Question_index': questions[i],
-          'Question': questions[i].text,
-          'Correct_Ans': questions[i].answers[0],
-          'User_Ans': chosenAns[i],
+          'question_index': questions[i],
+          'question': questions[i].text,
+          'correct_ans': questions[i].answers[0],
+          'user_ans': chosenAns[i],
         },
       );
     }
@@ -27,6 +28,13 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final numTotalQues = questions.length;
+    final numTotalCorrect = summaryData
+        .where(
+          (data) => data['correct_ans'] == data['user_ans'],
+        )
+        .length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -34,10 +42,11 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'You answered X/Y questions correctly.',
+            Text(
+              'You answered $numTotalCorrect/$numTotalQues questions correctly.',
               textAlign: TextAlign.center,
             ),
+            QuestionSummaty(summaryData),
             const SizedBox(height: 30),
             TextButton(
               onPressed: restartQuiz,
